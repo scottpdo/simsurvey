@@ -141,7 +141,6 @@ let render = () => {
 
     const height = HEIGHT / (maxVal + 1);
     let color = light.map((n, j) => Math.round(map(ease(i / maxVal), dark[j], n)));
-    console.log(color.reduce((a, b) => a + b));
     let textColor = 'rgb(' + (color.reduce((a, b) => a + b) < 300 ? light.map(n => n + 127) : dark).join(',') + ')';
 
     color = 'rgb(' + color.join(',') + ')';
