@@ -94,6 +94,13 @@ h1, h2, h3, h4, h5, h6 {
   content: "hello!";
 }
 
+#colors {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 #statements {
   background: #fff;
   position: fixed;

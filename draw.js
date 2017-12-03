@@ -1,6 +1,9 @@
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 
+const colors = document.getElementById('colors');
+const colorsContext = colors.getContext('2d');
+
 const HEIGHT = 11 * 40;
 const WIDTH = 11 * 60;
 const TILE_HEIGHT = HEIGHT / 11;
@@ -8,6 +11,9 @@ const TILE_WIDTH = WIDTH / 11;
 
 canvas.width = WIDTH;
 canvas.height = HEIGHT;
+
+colors.width = 40;
+colors.height = HEIGHT;
 
 const rand = (x) => {
   return x + 0.9 * (Math.random() - 0.5);
@@ -48,10 +54,10 @@ RESULTS.forEach(result => {
 });
 
 // now get range of Heatmap
-let max = -Infinity;
+let maxVal = -Infinity;
 
 Object.values(Heatmap).forEach(value => {
-  if (value > max) max = value;
+  if (value > maxVal) maxVal = value;
 });
 
 let visibleResult = null;
@@ -95,26 +101,15 @@ let onMouseMove = (e) => {
 canvas.addEventListener('mousemove', onMouseMove);
 canvas.addEventListener('mouseleave', () => statements.style.display = 'none');
 
-let draw = (result, i) => {
-
-  context.beginPath();
-  context.arc(result.x, result.y, 20, 0, 2 * Math.PI);
-  context.fill();
-  context.closePath();
-
-  if (dist(mouse, result) < 8) visibleResult = result;
-};
-
 const map = (val, min, max) => {
   return min + val * (max - min);
 };
 
 const ease = t => t * (2 - t);
+const dark = [0, 0, 50];        // [r, g, b]
+const light = [255, 200, 0];    // same
 
 let render = () => {
-
-  const dark = [0, 0, 50];
-  const light = [255, 200, 0];
 
   // reset
   visibleResult = null;
@@ -129,7 +124,7 @@ let render = () => {
     const x = displayX(coords.x);
     const y = displayY(coords.y);
     
-    let val = Heatmap[key] / max;
+    let val = Heatmap[key] / maxVal;
     val = ease(val); // bump it up a little
 
     const arr = light.map((n, i) => Math.round(map(val, dark[i], n)));
@@ -139,6 +134,25 @@ let render = () => {
     context.fillStyle = fill;
     context.fillRect(x, y - TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT);
     
+  }
+
+  let i = 0;
+  for (let i = 0; i <= maxVal; i++) {
+
+    const height = HEIGHT / (maxVal + 1);
+    let color = light.map((n, j) => Math.round(map(ease(i / maxVal), dark[j], n)));
+    console.log(color.reduce((a, b) => a + b));
+    let textColor = 'rgb(' + (color.reduce((a, b) => a + b) < 300 ? light.map(n => n + 127) : dark).join(',') + ')';
+
+    color = 'rgb(' + color.join(',') + ')';
+    colorsContext.fillStyle = color;
+    colorsContext.fillRect(0, HEIGHT - (i * height) - height, 40, height);
+
+    colorsContext.fillStyle = textColor;
+    colorsContext.font = '14px sans-serif';
+    colorsContext.textAlign = 'center';
+    colorsContext.textBaseline = 'middle';
+    colorsContext.fillText(i, 20, HEIGHT - (i * height) - height / 2);
   }
 
   // window.requestAnimationFrame(render, 100);
