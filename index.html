@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Simulation Survey</title>
+
+    <script src="survey.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed|Press+Start+2P" rel="stylesheet">   
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    
+    <div class="container">
+      
+      <h1>Simulation Survey  Results</h1>
+      
+      <div class="canvas-container">
+        <canvas id="canvas"></canvas>
+      </div>
+
+      <h2>What's going on here?</h2>
+
+      <p>This is a visualization of the results of a <a href="https://goo.gl/forms/kAnEPLvxocJJaMOy2">3-question survey</a> on computer simulations. The goal is to gain some insight into how people think about computer simulations. This is not a very scientific survey, nor is it IRB-approved! So, that's just to say &mdash; take this all with a shaker of salt. Anyway, the survey asks:</p>
+      
+      <ol>
+        <li>What is a simulation?</li>
+        <li>Is it possible for a simulation to precisely and accurately model reality?</li>
+        <li>Do you believe we are <a href="https://en.wikipedia.org/wiki/Simulation_hypothesis">living in a simulation</a>?</li>
+      </ol>
+
+      <h2>Findings</h2>
+
+      <p>As of <i>December 2, 2017</i>, 60 people have taken the survey. Of those:</p>
+
+      <ul>
+        <li>About <b>half (51.7%)</b> of the respondents answered between 6 and 8 on the ability of simulations to model reality.</li>
+        <li>About <b>half (53.3%)</b> of the respondents think there is a 0% chance that we are living in a simulation.
+          <ul><li>(Which also means that about half think there is a non-zero chance (!))</li></ul>
+        </li>
+        <li>A strong contingent (<b>10%</b>) of the respondents think that we are absolutely not living in a simulation <b>and</b> that it is also <i>impossible</i> for a simulation to precisely and accurately model reality.</li>
+        <li>Only <b>1</b> person is absolutely certain that we are living in a simulation. Their definition: "Our current reality."</li>
+        <li>More analysis of the respondents' definitions of 'simulation' forthcoming...</li>
+      </ul>
+      
+      <br><br>
+  
+      <hr>
+  
+      <p style="text-align: center;">
+        By <a href="https://twitter.com/scott_pdo">@scott_pdo</a> _ _ _
+        Last updated December 2, 2017
+      </p>
+
+    </div>
+
+    <div id="statements" style="display: none;"></div>
+
+    <script src="draw.js"></script>
+  </body>
+</html>

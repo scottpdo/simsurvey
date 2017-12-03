@@ -1,0 +1,123 @@
+html, body { margin: 0; padding: 0; }
+
+* {
+  box-sizing: border-box;
+  position: relative;
+}
+
+html {
+  background: #cce;
+}
+
+body {
+  font-size: 18px;
+  font-family: 'Barlow Semi Condensed', Helvetica, Arial, sans-serif;
+  line-height: 1.4;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 0 40px 40px 40px;
+}
+
+a, a:visited {
+  color: purple;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 0.15em solid;
+}
+
+a:active, a:hover {
+  background: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Press Start 2P', sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.container {
+  margin: 0 auto;
+  width: 900px;
+}
+
+.container h1 { 
+  margin: 2em auto;
+  text-align: center; 
+}
+
+.canvas-container {
+  margin-bottom: 100px;
+}
+
+.canvas-container::before,
+.canvas-container::after {
+  display: block;
+  font-weight: 700;
+  position: absolute;
+  width: 500px;
+  text-align: center;
+}
+
+.canvas-container::before {
+  content: "\2190  (YES) . . . I believe we are living in a simulation . . . (NO) \2192";
+  transform: rotate(90deg);
+  left: -165px;
+  top: 206px;
+}
+
+.canvas-container::after {
+  content: "\2190  (NO) . . . . . . It is possible to precisely and accurately model reality . . . . . . (YES) \2192";
+  bottom: -40px;
+  width: 100%;
+}
+
+#canvas {
+  box-shadow: 0 0 0 8px white;
+  display: block;
+  margin: 0 auto;
+}
+
+#canvas::before,
+#canvas::after {
+  display: block;
+  position: relative;
+  font-size: 50px;
+}
+
+#canvas::before {
+  content: "hi!";
+}
+
+#canvas::after {
+  content: "hello!";
+}
+
+#statements {
+  background: #fff;
+  position: fixed;
+  padding: 20px;
+  max-width: 340px;
+  transform: translateY(-50%);
+}
+
+#statements h3 {
+  border-bottom: 2px solid;
+  padding-bottom: 4px;
+  margin-top: 0;
+  font-size: 16px;
+}
+
+#statements p:first-child { margin-top: 0; }
+#statements p:last-child { margin-bottom: 0; }
+
+#statements p {
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+
+hr {
+  border: 0;
+  border-bottom: 1px solid black;
+}
